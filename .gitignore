@@ -6,10 +6,15 @@ lib-cov
 *.out
 *.pid
 *.gz
+*.swo
+*.swp
 
 pids
 logs
 results
 
+nohup.out
 npm-debug.log
 node_modules
+public/components
+

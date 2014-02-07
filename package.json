@@ -1,0 +1,33 @@
+{
+  "name": "ember-leaflet-scaffold",
+  "version": "0.0.0",
+  "description": "Basic 'app' integrating Ember and Leaflet, mainly as an example or a quick start repo.",
+  "homepage": "https://github.com/AppGeo/ember-leaflet-scaffold",
+  "author": "Ilya Radchenko",
+  "license": "MIT",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install && cd public/components/leaflet && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AppGeo/ember-leaflet-scaffold.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AppGeo/ember-leaflet-scaffold/issues"
+  },
+  "keywords": [
+    "ember",
+    "leaflet",
+    "scaffold"
+  ],
+  "devDependencies": {
+    "gulp-livereload": "~1.0.1",
+    "gulp-util": "~2.2.14",
+    "gulp": "~3.5.2",
+    "gulp-less": "~1.2.1",
+    "gulp-ember-handlebars": "~0.5.0",
+    "gulp-concat": "~2.1.7"
+  }
+}
