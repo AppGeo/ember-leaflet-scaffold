@@ -14,11 +14,12 @@ gulp.task('templates', function(){
       outputType: 'browser'
     }))
     .pipe(concat('templates.js'))
-    .pipe(gulp.dest(config.dist + 'scripts'));
+    .pipe(gulp.dest(config.dist + 'scripts'))
+    .pipe(refresh(config.livereloadPort));
 });
 
 gulp.task('less', function () {
-  gulp.src('./client/styles/main.less')
+  gulp.src(config.client + 'styles/*.less')
     .pipe(less({
       paths: [
         path.join(__dirname, 'client', 'styles')
@@ -35,4 +36,14 @@ gulp.task('concat', function () {
     .pipe(refresh(config.livereloadPort));
 });
 
-gulp.task('default', ['less', 'templates', 'concat']);
+gulp.task('livereload', function () {
+  refresh(config.livereloadPort);
+});
+
+gulp.task('watch', function () {
+  gulp.watch(config.client + 'styles/*.less', ['less']);
+  gulp.watch(config.client + 'templates/*.hbs', ['templates']);
+  gulp.watch(config.client + '**/*.js', ['concat']);
+});
+
+gulp.task('default', ['less', 'templates', 'concat', 'watch']);

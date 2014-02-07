@@ -5,3 +5,9 @@ body,
   margin: 0;
   height: 100%;
 }
+body {
+  padding-top: 50px;
+}
+.spacious {
+  padding: 1em;
+}

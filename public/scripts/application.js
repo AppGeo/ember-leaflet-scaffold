@@ -40,7 +40,11 @@ App.advanceReadiness();
 window.App = App;
 
 App.Router.map(function () {
+  this.route('about');
+});
 
+App.AboutView = Ember.View.extend({
+  classNames: ['spacious']
 });
 
 App.IndexView = Ember.View.extend({
