@@ -22,13 +22,11 @@ var LeafletInit = Ember.Object.extend({
   }.on('init'),
 
   attachTo: function ($el) {
-    Ember.run.schedule('afterRender', this, function () {
-      var $container = this.get('$container'),
-        map = this.get('map');
+    var $container = this.get('$container'),
+      map = this.get('map');
 
-      $container.appendTo($el);
-      map.invalidateSize(true);
-    });
+    $container.appendTo($el);
+    map.invalidateSize(true);
   }
 });
 
@@ -49,8 +47,6 @@ App.AboutView = Ember.View.extend({
 
 App.IndexView = Ember.View.extend({
   initLeaflet: function () {
-    var $this = this.$(),
-      leaflet = this.get('leaflet'),
-      map = leaflet.attachTo($this);
+    this.get('leaflet').attachTo(this.$());
   }.on('didInsertElement')
 });

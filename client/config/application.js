@@ -22,13 +22,11 @@ var LeafletInit = Ember.Object.extend({
   }.on('init'),
 
   attachTo: function ($el) {
-    Ember.run.schedule('afterRender', this, function () {
-      var $container = this.get('$container'),
-        map = this.get('map');
+    var $container = this.get('$container'),
+      map = this.get('map');
 
-      $container.appendTo($el);
-      map.invalidateSize(true);
-    });
+    $container.appendTo($el);
+    map.invalidateSize(true);
   }
 });
 
