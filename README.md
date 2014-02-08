@@ -18,6 +18,6 @@ npm start
 
 ### Todo
 
-- [ ] Browserify ember (currently it's concat)  
-- [ ] Add sidebar  
-- [ ] Wrap Leaflet events  
+- Browserify ember (currently it's concat)  
+- Add sidebar  
+- Wrap Leaflet events  
