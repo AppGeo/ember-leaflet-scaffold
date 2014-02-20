@@ -22,13 +22,11 @@ var LeafletInit = Ember.Object.extend({
   }.on('init'),
 
   attachTo: function ($el) {
-    Ember.run.schedule('afterRender', this, function () {
-      var $container = this.get('$container'),
-        map = this.get('map');
+    var $container = this.get('$container'),
+      map = this.get('map');
 
-      $container.appendTo($el);
-      map.invalidateSize(true);
-    });
+    $container.appendTo($el);
+    map.invalidateSize(true);
   }
 });
 
@@ -47,10 +45,21 @@ App.AboutView = Ember.View.extend({
   classNames: ['spacious']
 });
 
+App.ApplicationView = Ember.View.extend({
+  isSidebarOpen: false,
+
+  actions: {
+    toggleSidebar: function () {
+      this.toggleProperty('isSidebarOpen');
+    }
+  } 
+});
+
 App.IndexView = Ember.View.extend({
   initLeaflet: function () {
-    var $this = this.$(),
-      leaflet = this.get('leaflet'),
-      map = leaflet.attachTo($this);
+    this.get('leaflet').attachTo(this.$());
   }.on('didInsertElement')
+});
+
+App.SidebarView = Ember.View.extend({
 });

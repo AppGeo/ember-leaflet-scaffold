@@ -10,6 +10,5 @@
   },
   "_source": "git://github.com/Leaflet/Leaflet.git",
   "_target": "~0.7.2",
-  "_originalSource": "leaflet",
-  "_direct": true
+  "_originalSource": "leaflet"
 }
