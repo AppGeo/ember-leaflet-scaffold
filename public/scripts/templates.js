@@ -57,7 +57,7 @@ function program5(depth0,data) {
   },hashTypes:{'target': "ID"},hashContexts:{'target': depth0},contexts:[depth0],types:["STRING"],data:data})));
   data.buffer.push("> \n      <i ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
-    'class': (":fa view.isSidebarOpen:fa-chevron-left:fa-chevron-right")
+    'class': (":fa view.isSidebarOpen:fa-angle-left:fa-angle-right")
   },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
   data.buffer.push("></i>\n    </span>\n\n    ");
   stack1 = helpers._triageMustache.call(depth0, "outlet", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});

@@ -25,7 +25,7 @@
   </div>
   <div {{bind-attr class=':content view.isSidebarOpen:open'}}>
     <span class="toggle-sidebar" {{action 'toggleSidebar' target=view}}> 
-      <i {{bind-attr class=':fa view.isSidebarOpen:fa-chevron-left:fa-chevron-right'}}></i>
+      <i {{bind-attr class=':fa view.isSidebarOpen:fa-angle-left:fa-angle-right'}}></i>
     </span>
 
     {{outlet}}
