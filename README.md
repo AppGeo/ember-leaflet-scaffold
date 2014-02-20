@@ -20,5 +20,4 @@ npm start
 
 - As Component
 - Browserify ember (currently it's concat)  
-- Add sidebar  
 - Wrap Leaflet events  
