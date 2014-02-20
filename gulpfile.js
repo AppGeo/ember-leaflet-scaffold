@@ -36,10 +36,6 @@ gulp.task('concat', function () {
     .pipe(refresh(config.livereloadPort));
 });
 
-gulp.task('livereload', function () {
-  refresh(config.livereloadPort);
-});
-
 gulp.task('watch', function () {
   gulp.watch(config.client + 'styles/*.less', ['less']);
   gulp.watch(config.client + 'templates/*.hbs', ['templates']);

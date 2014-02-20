@@ -45,8 +45,21 @@ App.AboutView = Ember.View.extend({
   classNames: ['spacious']
 });
 
+App.ApplicationView = Ember.View.extend({
+  isSidebarOpen: false,
+
+  actions: {
+    toggleSidebar: function () {
+      this.toggleProperty('isSidebarOpen');
+    }
+  } 
+});
+
 App.IndexView = Ember.View.extend({
   initLeaflet: function () {
     this.get('leaflet').attachTo(this.$());
   }.on('didInsertElement')
+});
+
+App.SidebarView = Ember.View.extend({
 });

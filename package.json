@@ -1,6 +1,6 @@
 {
   "name": "ember-leaflet-scaffold",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Basic 'app' integrating Ember and Leaflet, mainly as an example or a quick start repo.",
   "homepage": "https://github.com/AppGeo/ember-leaflet-scaffold",
   "author": "Ilya Radchenko",

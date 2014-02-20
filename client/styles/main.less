@@ -13,3 +13,65 @@ body {
 .spacious {
   padding: 1em;
 }
+
+#sidebar {
+  width: 300px;
+  height: auto; 
+  z-index: 50;
+  border-right: 2px solid #999;
+
+  position: absolute;
+  top: 50px;
+  left: -300px;
+  bottom: 0;
+
+  -moz-transition: left 0.5s ease;
+  -webkit-transition: left 0.5s ease;
+  transition: left 0.5s ease;
+
+  &.open { 
+    left: 0; 
+  }
+}
+
+.toggle-sidebar {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  cursor: pointer;
+  padding: 0.5em;
+  z-index: 5000;
+
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+  border-radius: 4px;
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.content {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 0;
+
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -moz-transition: left 0.5s ease;
+  -webkit-transition: left 0.5s ease;
+  transition: left 0.5s ease;
+
+  &.open { 
+    left: 300px; 
+  }
+}
