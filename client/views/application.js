@@ -1,4 +1,4 @@
-App.ApplicationView = Ember.View.extend({
+var ApplicationView = Ember.View.extend({
   isSidebarOpen: false,
 
   actions: {
@@ -7,3 +7,5 @@ App.ApplicationView = Ember.View.extend({
     }
   } 
 });
+
+module.exports = ApplicationView;

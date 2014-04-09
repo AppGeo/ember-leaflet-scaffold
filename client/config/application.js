@@ -1,3 +1,6 @@
+require('collapse');
+
+var L = require('leaflet');
 var App = Ember.Application.create({});
 var LeafletInit = Ember.Object.extend({
   map: null,
@@ -36,3 +39,5 @@ App.inject('view', 'leaflet', 'leaflet:main');
 App.advanceReadiness();
 
 window.App = App;
+
+module.exports = App;

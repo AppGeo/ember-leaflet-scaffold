@@ -21,8 +21,8 @@
 <div class="wrapper">
   <div id="sidebar" {{bind-attr class='view.isSidebarOpen:open'}}>
     {{render 'sidebar'}}
-
   </div>
+
   <div {{bind-attr class=':content view.isSidebarOpen:open'}}>
     <span class="toggle-sidebar" {{action 'toggleSidebar' target=view}}> 
       <i {{bind-attr class=':fa view.isSidebarOpen:fa-angle-left:fa-angle-right'}}></i>
