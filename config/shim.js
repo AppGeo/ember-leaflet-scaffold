@@ -1,14 +1,18 @@
 module.exports = {
-  'handlebars': 'Handlebars',
-  'ember': {
-    exports: 'Ember',
-    depends: ['jquery', 'handlebars']
+ "jquery": "$",
+  "handlebars": "Handlebars",
+  "ember": {
+    "exports": "Ember",
+    "depends": [
+      "jquery:jQuery",
+      "handlebars:Handlebars"
+    ]
   },
   'ember-data': {
     exports: 'DS',
     depends: ['ember']
   },
   'collapse': {
-    depends: ['jquery']
+    depends: ['jquery:jQuery']
   }
 };

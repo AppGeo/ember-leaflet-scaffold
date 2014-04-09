@@ -6,17 +6,40 @@
   "author": "Ilya Radchenko",
   "license": "MIT",
   "main": "server.js",
-  "browserify-shim": "./config/shim.js",
+  "browserify-shim":{
+ "jquery": "$",
+  "handlebars": "Handlebars",
+  "ember": {
+    "exports": "Ember",
+    "depends": [
+      "jquery:jQuery",
+      "handlebars:Handlebars"
+    ]
+  },
+  "ember-data": {
+    "exports": "DS",
+    "depends": ["ember"]
+  },
+  "collapse": {
+    "depends": ["jquery:jQuery"]
+  }
+},
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
-    "handlebars": "./bower_components/handlebars/handlebars.runtime.js",
+    "handlebars": "./bower_components/handlebars/handlebars.js",
     "ember": "./bower_components/ember/ember.js",
     "ember-data": "./bower_components/ember-data/ember-data.js",
     "collapse": "./bower_components/bootstrap/js/collapse.js"
   },
+  "browserify": {
+    "transform": [ "browserify-shim" ]
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "bower install"
+    "postinstall": "bower install",
+    "build-lib" :"browserify -r jquery -r handlebars -r ember -r ember-data -r collapse > public/scripts/libs.js",
+    "build-app" :"browserify ./client/.index.js > ./public/scripts/application.js",
+    "build": "npm run build-app"
   },
   "repository": {
     "type": "git",
@@ -32,18 +55,10 @@
   ],
   "devDependencies": {
     "matchdep": "~0.3.0",
-    "grunt-contrib-clean": "^0.5.0",
-    "grunt-contrib-watch": "^0.5.3",
-    "grunt-githooks": "^0.3.1",
-    "grunt-contrib-jshint": "^0.8.0",
-    "grunt-ember-templates": "^0.4.19",
-    "grunt-jscs-checker": "^0.4.0",
-    "grunt-contrib-less": "^0.10.0",
     "browserify-shim": "^3.4.1",
     "ember-stream-generator": "^0.3.2",
     "browserify": "^3.38.1",
-    "grunt": "^0.4.4",
-    "grunt-browserify": "^2.0.3"
+    "connect-livereload": "^0.3.2"
   },
   "dependencies": {
     "express": "~3.4.8",
