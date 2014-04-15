@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
 
-; jQuery = global.jQuery = require("/Users/cmetcalf/projects/ember-leaflet-scaffold/bower_components/jquery/dist/jquery.js");
+; jQuery = global.jQuery = require("/Users/iradchenko/sandbox/ember-leaflet-scaffold/bower_components/jquery/dist/jquery.js");
 ;__browserify_shim_require__=require;(function browserifyShim(module, define, require) {
 /* ========================================================================
  * Bootstrap: collapse.js v3.1.1
@@ -177,11 +177,11 @@
 }).call(global, module, undefined, undefined);
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"/Users/cmetcalf/projects/ember-leaflet-scaffold/bower_components/jquery/dist/jquery.js":4}],2:[function(require,module,exports){
+},{"/Users/iradchenko/sandbox/ember-leaflet-scaffold/bower_components/jquery/dist/jquery.js":4}],2:[function(require,module,exports){
 (function (global){
 
-; jQuery = global.jQuery = require("/Users/cmetcalf/projects/ember-leaflet-scaffold/bower_components/jquery/dist/jquery.js");
-Handlebars = global.Handlebars = require("/Users/cmetcalf/projects/ember-leaflet-scaffold/bower_components/handlebars/handlebars.js");
+; jQuery = global.jQuery = require("/Users/iradchenko/sandbox/ember-leaflet-scaffold/bower_components/jquery/dist/jquery.js");
+Handlebars = global.Handlebars = require("/Users/iradchenko/sandbox/ember-leaflet-scaffold/bower_components/handlebars/handlebars.js");
 ;__browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 /*!
  * @overview  Ember - JavaScript Application Framework
@@ -43424,7 +43424,7 @@ Ember.State = generateRemovedClass("Ember.State");
 }).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"/Users/cmetcalf/projects/ember-leaflet-scaffold/bower_components/handlebars/handlebars.js":3,"/Users/cmetcalf/projects/ember-leaflet-scaffold/bower_components/jquery/dist/jquery.js":4}],3:[function(require,module,exports){
+},{"/Users/iradchenko/sandbox/ember-leaflet-scaffold/bower_components/handlebars/handlebars.js":3,"/Users/iradchenko/sandbox/ember-leaflet-scaffold/bower_components/jquery/dist/jquery.js":4}],3:[function(require,module,exports){
 (function (global){
 ;__browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 /*!
@@ -55294,7 +55294,7 @@ return jQuery;
 
 }));
 
-; browserify_shim__define__module__export__(typeof $ != "undefined" ? $ : window.$);
+; browserify_shim__define__module__export__(typeof jQuery != "undefined" ? jQuery : window.jQuery);
 
 }).call(global, undefined, undefined, undefined, undefined, function defineExport(ex) { module.exports = ex; });
 
@@ -55311,9 +55311,9 @@ var App = require('./config/application');
 App.Router.map(routes);
 
 
-require('./views/about');
-require('./views/application');
-require('./views/index');
+App.AboutView = require('./views/about');
+App.ApplicationView = require('./views/application');
+App.IndexView = require('./views/index');
 
 
 
@@ -55413,7 +55413,14 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 require('collapse');
 
 var L = require('leaflet');
-var App = Ember.Application.create({});
+var App = Ember.Application.create({
+  LOG_ACTIVE_GENERATION: true,
+  LOG_MODULE_RESOLVER: true,
+  LOG_TRANSITIONS: true,
+  LOG_TRANSITIONS_INTERNAL: true,
+  LOG_VIEW_LOOKUPS: true
+});
+
 var LeafletInit = Ember.Object.extend({
   map: null,
   initMap: function (options) {

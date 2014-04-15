@@ -6,24 +6,28 @@
   "author": "Ilya Radchenko",
   "license": "MIT",
   "main": "server.js",
-  "browserify-shim":{
- "jquery": "$",
-  "handlebars": "Handlebars",
-  "ember": {
-    "exports": "Ember",
-    "depends": [
-      "jquery:jQuery",
-      "handlebars:Handlebars"
-    ]
+  "browserify-shim": {
+    "jquery": "jQuery",
+    "handlebars": "Handlebars",
+    "ember": {
+      "exports": "Ember",
+      "depends": [
+        "jquery:jQuery",
+        "handlebars:Handlebars"
+      ]
+    },
+    "ember-data": {
+      "exports": "DS",
+      "depends": [
+        "ember"
+      ]
+    },
+    "collapse": {
+      "depends": [
+        "jquery:jQuery"
+      ]
+    }
   },
-  "ember-data": {
-    "exports": "DS",
-    "depends": ["ember"]
-  },
-  "collapse": {
-    "depends": ["jquery:jQuery"]
-  }
-},
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
     "handlebars": "./bower_components/handlebars/handlebars.js",
@@ -32,14 +36,16 @@
     "collapse": "./bower_components/bootstrap/js/collapse.js"
   },
   "browserify": {
-    "transform": [ "browserify-shim" ]
+    "transform": [
+      "browserify-shim"
+    ]
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "bower install",
-    "build-lib" :"browserify -r jquery -r handlebars -r ember -r ember-data -r collapse > public/scripts/libs.js",
-    "build-app" :"browserify ./client/.index.js > ./public/scripts/application.js",
-    "build": "npm run build-app"
+    "postinstall": "bower install && npm run build",
+    "build-lib": "browserify -r jquery -r handlebars -r ember -r ember-data -r collapse -r leaflet > public/scripts/libs.js",
+    "build-app": "browserify ./client/.index.js > ./public/scripts/application.js",
+    "build": "npm run build-lib && npm run build-app && cp ./bower_components/font-awesome/fonts/* ./public/fonts/"
   },
   "repository": {
     "type": "git",
