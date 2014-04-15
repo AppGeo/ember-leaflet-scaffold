@@ -9,10 +9,10 @@ var App = require('./config/application');
 App.Router.map(routes);
 
 
+
+
 App.AboutView = require('./views/about');
-App.ApplicationView = require('./views/application');
 App.IndexView = require('./views/index');
-
-
+App.ApplicationView = require('./views/application');
 
 module.exports = App;

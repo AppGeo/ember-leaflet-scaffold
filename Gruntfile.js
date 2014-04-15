@@ -51,15 +51,19 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['client/**/*.js'],
-        tasks: ['browserify:dev', 'jscs:client', 'jshint:client']
+        tasks: ['browserify:app', 'jscs:client', 'jshint:client']
       },
       templates: {
         files: ['client/templates/**/*.hbs'],
-        tasks: ['emberTemplates:app', 'browserify:dev']
+        tasks: ['emberTemplates:app', 'browserify:app']
       },
       styles: {
         files: ['client/styles/*.less'],
         tasks: ['less']
+      },
+      browserifyOther: {
+        files: ['public/libs/script-loading.js'],
+        tasks: ['browserify:scriptLoading']
       }
     },
 
@@ -69,54 +73,27 @@ module.exports = function (grunt) {
         dest: 'public/scripts/libs.js',
         options: {
           debug: true,
-          shim: {
-            'handlebars': {
-              path: './bower_components/handlebars/handlebars.runtime.js',
-              exports: 'Handlebars'
-            },
-            'ember': {
-              path: './bower_components/ember/ember.js',
-              exports: 'Ember',
-              depends: {
-                'jquery': 'jQuery',
-                'handlebars': 'Handlebars'
-              }
-            },
-            'ember-data': {
-              path: './bower_components/ember-data/ember-data.js',
-              exports: 'DS',
-              depends: {
-                'ember': 'Ember'
-              }
-            },
-            'collapse': {
-              path: './bower_components/bootstra/js/collapse.js',
-              depends: {
-                'jquery': 'jQuery'
-              }
-            }
-          }
+          transforms: ['browserify-shim']
         }
       },
 
-      dev: {
+      app: {
         options: {
           debug: true,
           external: [
-            'jquery', 'handlebars', 'ember', 'ember-data',
-            'collapse'
+            'jquery', 'handlebars', 'ember', 'ember-data', 'collapse', 'leaflet'
           ]
         },
         files: {
-          './public/scripts/application.js': ['./client/.index.js']
+          'public/scripts/application.js': ['client/.index.js']
         }
       }
     },
 
     emberTemplates: {
       options: {
-        templateCompilerPath: './bower_components/ember/ember-template-compiler.js',
-        handlebarsPath: './bower_components/handlebars/handlebars.js'
+        templateCompilerPath: 'bower_components/ember/ember-template-compiler.js',
+        handlebarsPath: 'bower_components/handlebars/handlebars.js'
       },
       app: {
         options: {
@@ -135,7 +112,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: 'client/styles',
           src: ['styles.less', 'libs.less', '!_*.less'],
-          dest: 'assets/styles',
+          dest: 'public/styles',
           ext: '.css'
         }]
       }
@@ -153,6 +130,7 @@ module.exports = function (grunt) {
       },
       server: {
         src: [
+          'lib/**/*.js',
           '*.js'
         ]
       }
@@ -172,7 +150,8 @@ module.exports = function (grunt) {
           jshintrc: '.jshintrc_node'
         },
         src: [
-          '*.js'
+          'lib/**/*.js',
+          'server.js'
         ]
       }
     },

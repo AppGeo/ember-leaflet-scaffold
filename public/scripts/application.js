@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
 
-; jQuery = global.jQuery = require("/Users/iradchenko/sandbox/ember-leaflet-scaffold/bower_components/jquery/dist/jquery.js");
+; require("/Users/iradchenko/sandbox/ember-leaflet-scaffold/bower_components/jquery/dist/jquery.js");
 ;__browserify_shim_require__=require;(function browserifyShim(module, define, require) {
 /* ========================================================================
  * Bootstrap: collapse.js v3.1.1
@@ -180,8 +180,8 @@
 },{}],2:[function(require,module,exports){
 (function (global){
 
-; jQuery = global.jQuery = require("/Users/iradchenko/sandbox/ember-leaflet-scaffold/bower_components/jquery/dist/jquery.js");
-Handlebars = global.Handlebars = require("/Users/iradchenko/sandbox/ember-leaflet-scaffold/bower_components/handlebars/handlebars.js");
+; require("/Users/iradchenko/sandbox/ember-leaflet-scaffold/bower_components/jquery/dist/jquery.js");
+require("/Users/iradchenko/sandbox/ember-leaflet-scaffold/bower_components/handlebars/handlebars.js");
 ;__browserify_shim_require__=require;(function browserifyShim(module, exports, require, define, browserify_shim__define__module__export__) {
 /*!
  * @overview  Ember - JavaScript Application Framework
@@ -46191,11 +46191,11 @@ var App = require('./config/application');
 App.Router.map(routes);
 
 
+
+
 App.AboutView = require('./views/about');
-App.ApplicationView = require('./views/application');
 App.IndexView = require('./views/index');
-
-
+App.ApplicationView = require('./views/application');
 
 module.exports = App;
 

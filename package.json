@@ -11,21 +11,14 @@
     "handlebars": "Handlebars",
     "ember": {
       "exports": "Ember",
-      "depends": [
-        "jquery:jQuery",
-        "handlebars:Handlebars"
-      ]
+      "depends": ["jquery", "handlebars"]
     },
     "ember-data": {
       "exports": "DS",
-      "depends": [
-        "ember"
-      ]
+      "depends": ["ember"]
     },
     "collapse": {
-      "depends": [
-        "jquery:jQuery"
-      ]
+      "depends": ["jquery"]
     }
   },
   "browser": {

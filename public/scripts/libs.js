@@ -172,6 +172,8 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
 
 },{}],"collapse":[function(require,module,exports){
 module.exports=require('KkrVbr');
+},{}],"ember-data":[function(require,module,exports){
+module.exports=require('yRF7Np');
 },{}],"yRF7Np":[function(require,module,exports){
 /*!
  * @overview  Ember Data
@@ -11305,8 +11307,6 @@ define("ember-inflector/lib/system/string",
   });
 global.DS = requireModule('ember-data/lib/main')['default'];
 }(window));
-},{}],"ember-data":[function(require,module,exports){
-module.exports=require('yRF7Np');
 },{}],"ember":[function(require,module,exports){
 module.exports=require('QGCdlF');
 },{}],"QGCdlF":[function(require,module,exports){
