@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "bower install && npm run build",
+    "postinstall": "bower install && mkdirp dist/styles && mkdirp dist/scripts && npm run build",
     "less": "lessc ./client/styles/main.less > ./dist/styles/main.css && lessc ./client/styles/libs.less > ./dist/styles/libs.css",
     "emberate": "emberate -p",
     "browserify": "browserify ./client/.index.js -d -o ./dist/scripts/application.js",
@@ -73,7 +73,8 @@
     "ember-template-compiler": "^1.6.0-beta.3",
     "emberate": "^0.6.1",
     "hbsfy": "git://github.com/knownasilya/node-hbsfy#ember",
-    "less": "^1.7.0"
+    "less": "^1.7.0",
+    "mkdirp": "^0.4.0"
   },
   "dependencies": {
     "body-parser": "^1.0.2",

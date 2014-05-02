@@ -17,4 +17,5 @@ nohup.out
 npm-debug.log
 node_modules
 bower_components
-
+client/.index.js
+dist
