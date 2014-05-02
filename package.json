@@ -6,19 +6,35 @@
   "author": "Ilya Radchenko",
   "license": "MIT",
   "main": "server.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install && npm run build",
+    "less": "lessc ./client/styles/main.less > ./dist/styles/main.css && lessc ./client/styles/libs.less > ./dist/styles/libs.css",
+    "emberate": "emberate -p",
+    "browserify": "browserify ./client/.index.js -d -o ./dist/scripts/application.js",
+    "build": "npm run less && npm run emberate && npm run browserify && cp ./bower_components/font-awesome/fonts/* ./static/fonts/"
+  },
   "browserify-shim": {
     "jquery": "jQuery",
     "handlebars": "Handlebars",
     "ember": {
       "exports": "Ember",
-      "depends": ["jquery", "handlebars"]
+      "depends": [
+        "jquery:jQuery",
+        "handlebars:Handlebars"
+      ]
     },
     "ember-data": {
       "exports": "DS",
-      "depends": ["ember"]
+      "depends": [
+        "ember"
+      ]
     },
     "collapse": {
-      "depends": ["jquery"]
+      "depends": [
+        "jquery:jQuery"
+      ]
     }
   },
   "browser": {
@@ -30,15 +46,13 @@
   },
   "browserify": {
     "transform": [
-      "browserify-shim"
+      "browserify-shim",
+      "hbsfy"
     ]
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "bower install && npm run build",
-    "build-lib": "browserify -r jquery -r handlebars -r ember -r ember-data -r collapse -r leaflet > public/scripts/libs.js",
-    "build-app": "browserify -x ./public/scripts/libs.js ./client/.index.js > ./public/scripts/application.js",
-    "build": "npm run build-lib && npm run build-app && cp ./bower_components/font-awesome/fonts/* ./public/fonts/"
+  "hbsfy": {
+    "precompiler": "ember-template-compiler",
+    "compiler": "Ember.Handlebars"
   },
   "repository": {
     "type": "git",
@@ -53,12 +67,22 @@
     "scaffold"
   ],
   "devDependencies": {
-    "browserify-shim": "^3.4.1",
     "browserify": "^3.38.1",
-    "connect-livereload": "^0.3.2"
+    "browserify-shim": "^3.4.1",
+    "connect-livereload": "^0.3.2",
+    "ember-template-compiler": "^1.6.0-beta.3",
+    "emberate": "^0.6.1",
+    "hbsfy": "git://github.com/knownasilya/node-hbsfy#ember",
+    "less": "^1.7.0"
   },
   "dependencies": {
-    "express": "~3.4.8",
-    "leaflet": "^0.7.2"
+    "body-parser": "^1.0.2",
+    "chalk": "^0.4.0",
+    "compression": "^1.0.2",
+    "errorhandler": "^1.0.1",
+    "express": "^4.1.1",
+    "leaflet": "^0.7.2",
+    "morgan": "^1.0.0",
+    "serve-static": "^1.1.0"
   }
 }

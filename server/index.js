@@ -1,21 +1,25 @@
-var express = require('express'),
-  livereload = require('connect-livereload'),
-  config = require('./config'),
-  app = express(),
-  env = app.get('env'),
-  port = process.env.PORT || config.serverPort || 3000;
+var express = require('express');
+var bodyParser = require('body-parser');
+var compression = require('compression');
+var serveStatic = require('serve-static');
+var app = express();
+var env = app.get('env');
 
 if (env === 'development') {
+  var logger = require('morgan');
+  var livereload = require('connect-livereload');
+  var errorHandler = require('errorhandler');
+
   app.use(livereload());
-  app.use(express.logger('dev'));
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+  app.use(logger('dev'));
+  app.use(errorHandler({ dumpExceptions: true, showStack: true }));
 }
 
-app.use(express.compress());
-app.use(express.urlencoded());
-app.use(express.json());
+app.use(compression());
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+app.use(serveStatic('./static'));
+app.use(serveStatic('./dist'));
 
-app.use(express.static('./public'));
 
-app.listen(port);
-console.log('Express server (' + env + ') running on port ' + port);
+module.exports = app;
