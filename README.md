@@ -11,7 +11,7 @@ On the client side, there is Ember and Leaflet, along with Bootstrap.
 
 ```bash
 npm install
-gulp
+npm run build
 npm start
 ```
 
