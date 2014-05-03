@@ -18,5 +18,5 @@ npm start
 ### Todo
 
 - As Component
-- Browserify ember (currently it's concat)  
+- ~~Browserify ember (currently it's concat)~~
 - Wrap Leaflet events  
