@@ -71,7 +71,7 @@
     "browserify-shim": "^3.4.1",
     "connect-livereload": "^0.3.2",
     "ember-template-compiler": "^1.6.0-beta.3",
-    "emberate": "^0.6.1",
+    "emberate": "^0.6.3",
     "hbsfy": "git://github.com/knownasilya/node-hbsfy#ember",
     "less": "^1.7.0",
     "mkdirp": "^0.4.0"
