@@ -16,5 +16,6 @@ results
 nohup.out
 npm-debug.log
 node_modules
-public/components
-
+bower_components
+client/.index.js
+dist

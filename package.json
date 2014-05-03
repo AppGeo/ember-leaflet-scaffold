@@ -1,22 +1,58 @@
 {
   "name": "ember-leaflet-scaffold",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Basic 'app' integrating Ember and Leaflet, mainly as an example or a quick start repo.",
   "homepage": "https://github.com/AppGeo/ember-leaflet-scaffold",
   "author": "Ilya Radchenko",
   "license": "MIT",
   "main": "server.js",
-  "browserify-shim": "./config/shim.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install && mkdirp dist/styles && mkdirp dist/scripts && npm run build",
+    "less": "lessc ./client/styles/main.less > ./dist/styles/main.css && lessc ./client/styles/libs.less > ./dist/styles/libs.css",
+    "emberate": "emberate -p",
+    "browserify": "browserify ./client/.index.js -d -o ./dist/scripts/application.js",
+    "build": "npm run less && npm run emberate && npm run browserify && cp ./bower_components/font-awesome/fonts/* ./static/fonts/"
+  },
+  "browserify-shim": {
+    "jquery": "jQuery",
+    "handlebars": "Handlebars",
+    "ember": {
+      "exports": "Ember",
+      "depends": [
+        "jquery:jQuery",
+        "handlebars:Handlebars"
+      ]
+    },
+    "ember-data": {
+      "exports": "DS",
+      "depends": [
+        "ember"
+      ]
+    },
+    "collapse": {
+      "depends": [
+        "jquery:jQuery"
+      ]
+    }
+  },
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
-    "handlebars": "./bower_components/handlebars/handlebars.runtime.js",
+    "handlebars": "./bower_components/handlebars/handlebars.js",
     "ember": "./bower_components/ember/ember.js",
     "ember-data": "./bower_components/ember-data/ember-data.js",
     "collapse": "./bower_components/bootstrap/js/collapse.js"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "bower install"
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      "hbsfy"
+    ]
+  },
+  "hbsfy": {
+    "precompiler": "ember-template-compiler",
+    "compiler": "Ember.Handlebars"
   },
   "repository": {
     "type": "git",
@@ -31,22 +67,23 @@
     "scaffold"
   ],
   "devDependencies": {
-    "matchdep": "~0.3.0",
-    "grunt-contrib-clean": "^0.5.0",
-    "grunt-contrib-watch": "^0.5.3",
-    "grunt-githooks": "^0.3.1",
-    "grunt-contrib-jshint": "^0.8.0",
-    "grunt-ember-templates": "^0.4.19",
-    "grunt-jscs-checker": "^0.4.0",
-    "grunt-contrib-less": "^0.10.0",
-    "browserify-shim": "^3.4.1",
-    "ember-stream-generator": "^0.3.2",
     "browserify": "^3.38.1",
-    "grunt": "^0.4.4",
-    "grunt-browserify": "^2.0.3"
+    "browserify-shim": "^3.4.1",
+    "connect-livereload": "^0.3.2",
+    "ember-template-compiler": "^1.6.0-beta.3",
+    "emberate": "^0.6.3",
+    "hbsfy": "git://github.com/knownasilya/node-hbsfy#ember",
+    "less": "^1.7.0",
+    "mkdirp": "^0.4.0"
   },
   "dependencies": {
-    "express": "~3.4.8",
-    "leaflet": "^0.7.2"
+    "body-parser": "^1.0.2",
+    "chalk": "^0.4.0",
+    "compression": "^1.0.2",
+    "errorhandler": "^1.0.1",
+    "express": "^4.1.1",
+    "leaflet": "^0.7.2",
+    "morgan": "^1.0.0",
+    "serve-static": "^1.1.0"
   }
 }
