@@ -1,21 +1,15 @@
 {
-  "predef": [
-    "module",
-    "require",
-    "document",
-    "window",
-    "console",
-    "alert",
-    "location",
-    "setTimeout",
-    "Ember"
-  ],
-  "node" : false,
+  "predef": {
+    "document": true,
+    "window": true,
+    "ElsENV": true,
+    "L": true
+  },
   "browser" : true,
   "boss" : true,
-  "curly": false,
+  "curly": true,
   "debug": false,
-  "devel": false,
+  "devel": true,
   "eqeqeq": true,
   "evil": true,
   "forin": false,
@@ -34,5 +28,6 @@
   "strict": false,
   "white": false,
   "eqnull": true,
-  "esnext": true
+  "esnext": true,
+  "unused": true
 }

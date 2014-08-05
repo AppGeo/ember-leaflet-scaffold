@@ -1,89 +1,35 @@
 {
-  "name": "ember-leaflet-scaffold",
-  "version": "0.2.0",
-  "description": "Basic 'app' integrating Ember and Leaflet, mainly as an example or a quick start repo.",
-  "homepage": "https://github.com/AppGeo/ember-leaflet-scaffold",
-  "author": "Ilya Radchenko",
-  "license": "MIT",
-  "main": "server.js",
+  "name": "els",
+  "version": "0.0.0",
+  "private": true,
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "bower install && mkdirp dist/styles && mkdirp dist/scripts && npm run build",
-    "less": "lessc ./client/styles/main.less > ./dist/styles/main.css && lessc ./client/styles/libs.less > ./dist/styles/libs.css",
-    "emberate": "emberate -p",
-    "browserify": "browserify ./client/.index.js -d -o ./dist/scripts/application.js",
-    "build": "npm run less && npm run emberate && npm run browserify && cp ./bower_components/font-awesome/fonts/* ./static/fonts/"
+    "postinstall": "bower install",
+    "start": "ember server",
+    "build": "ember build",
+    "test": "ember test"
   },
-  "browserify-shim": {
-    "jquery": "jQuery",
-    "handlebars": "Handlebars",
-    "ember": {
-      "exports": "Ember",
-      "depends": [
-        "jquery:jQuery",
-        "handlebars:Handlebars"
-      ]
-    },
-    "ember-data": {
-      "exports": "DS",
-      "depends": [
-        "ember"
-      ]
-    },
-    "collapse": {
-      "depends": [
-        "jquery:jQuery"
-      ]
-    }
+  "repository": "https://github.com/AppGeo/ember-leaflet-scaffold",
+  "engines": {
+    "node": ">= 0.10.0"
   },
-  "browser": {
-    "jquery": "./bower_components/jquery/dist/jquery.js",
-    "handlebars": "./bower_components/handlebars/handlebars.js",
-    "ember": "./bower_components/ember/ember.js",
-    "ember-data": "./bower_components/ember-data/ember-data.js",
-    "collapse": "./bower_components/bootstrap/js/collapse.js"
-  },
-  "browserify": {
-    "transform": [
-      "browserify-shim",
-      "hbsfy"
-    ]
-  },
-  "hbsfy": {
-    "precompiler": "ember-template-compiler",
-    "compiler": "Ember.Handlebars"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/AppGeo/ember-leaflet-scaffold.git"
-  },
-  "bugs": {
-    "url": "https://github.com/AppGeo/ember-leaflet-scaffold/issues"
-  },
-  "keywords": [
-    "ember",
-    "leaflet",
-    "scaffold"
-  ],
+  "author": "",
+  "license": "MIT",
   "devDependencies": {
-    "browserify": "^3.38.1",
-    "browserify-shim": "^3.4.1",
-    "connect-livereload": "^0.3.2",
-    "ember-template-compiler": "^1.6.0-beta.3",
-    "emberate": "^0.6.3",
-    "hbsfy": "git://github.com/knownasilya/node-hbsfy#ember",
-    "less": "^1.7.0",
-    "mkdirp": "^0.4.0"
-  },
-  "dependencies": {
-    "body-parser": "^1.0.2",
-    "chalk": "^0.4.0",
-    "compression": "^1.0.2",
-    "errorhandler": "^1.0.1",
+    "body-parser": "^1.2.0",
+    "broccoli-asset-rev": "0.0.17",
+    "broccoli-ember-hbs-template-compiler": "^1.5.0",
+    "broccoli-less-single": "^0.1.4",
+    "broccoli-merge-trees": "^0.1.4",
+    "broccoli-static-compiler": "^0.1.4",
+    "ember-cli": "0.0.40",
+    "ember-cli-ember-data": "0.1.0",
+    "ember-cli-ic-ajax": "0.1.1",
     "express": "^4.1.1",
-    "leaflet": "^0.7.2",
-    "morgan": "^1.0.0",
-    "serve-static": "^1.1.0"
+    "glob": "^3.2.9",
+    "originate": "0.1.5"
   }
 }
